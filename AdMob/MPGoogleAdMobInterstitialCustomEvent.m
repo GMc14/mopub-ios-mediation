@@ -127,11 +127,13 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
 - (void)interstitialWillDismissScreen:(GADInterstitial *)ad {
     MPLogAdEvent([MPLogEvent adWillDisappearForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
     [self.delegate fullscreenAdAdapterAdWillDisappear:self];
+    [self.delegate fullscreenAdAdapterAdWillDismiss:self];
 }
 
 - (void)interstitialDidDismissScreen:(GADInterstitial *)ad {
     MPLogAdEvent([MPLogEvent adDidDisappearForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
     [self.delegate fullscreenAdAdapterAdDidDisappear:self];
+    [self.delegate fullscreenAdAdapterAdDidDismiss:self];
 }
 
 - (void)interstitialWillLeaveApplication:(GADInterstitial *)ad {

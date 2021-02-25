@@ -187,8 +187,11 @@ static NSString *const kMoPubVASAdapterVideoCompleteEventId = @"onVideoComplete"
     MPLogAdEvent([MPLogEvent adDidDisappearForAdapter:NSStringFromClass(self.class)], self.siteId);
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate fullscreenAdAdapterAdWillDismiss:self];
         [self.delegate fullscreenAdAdapterAdWillDisappear:self];
         [self.delegate fullscreenAdAdapterAdDidDisappear:self];
+        [self.delegate fullscreenAdAdapterAdDidDismiss:self];
+        
         self.interstitialAd = nil;
     });
 }

@@ -212,12 +212,15 @@
         MPLogInfo(@"VAS interstitial %@ will dismiss.", interstitialAd);
         MPLogAdEvent([MPLogEvent adWillDisappearForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
         
+        [self.delegate fullscreenAdAdapterAdWillDismiss:self];
         [self.delegate fullscreenAdAdapterAdWillDisappear:self];
         
         MPLogInfo(@"VAS interstitial %@ did dismiss.", interstitialAd);
         MPLogAdEvent([MPLogEvent adDidDisappearForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
         
         [self.delegate fullscreenAdAdapterAdDidDisappear:self];
+        [self.delegate fullscreenAdAdapterAdDidDismiss:self];
+        
         [self invalidate];
     });
 }
